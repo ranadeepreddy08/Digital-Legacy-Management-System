@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import Optional
 from dotenv import load_dotenv
 
 # Base directory of the repository
@@ -14,6 +15,14 @@ class Settings:
     NEO4J_USER: str = os.getenv("NEO4J_USER", "neo4j")
     NEO4J_PASSWORD: str = os.getenv("NEO4J_PASSWORD", "password123")
     NEO4J_DATABASE: str = os.getenv("NEO4J_DATABASE", "neo4j")
+
+    # Oracle Relational Database Credentials (Dual-Database Integration)
+    ORACLE_USER: str = os.getenv("ORACLE_USER", "LEGACY_USER")
+    ORACLE_PASSWORD: str = os.getenv("ORACLE_PASSWORD", "")
+    ORACLE_DSN: str = os.getenv("ORACLE_DSN", "localhost:1521/XE")
+    ORACLE_CLIENT_LIB_DIR: Optional[str] = os.getenv(
+        "ORACLE_CLIENT_LIB_DIR", r"C:\oraclexe\app\oracle\product\11.2.0\server\bin"
+    )
 
     # FastAPI Application Config
     APP_HOST: str = os.getenv("APP_HOST", "127.0.0.1")
